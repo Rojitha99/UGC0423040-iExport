@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Slide;
 
 class HomeController extends Controller
 {
@@ -13,7 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+         $this->middleware('auth')->except('index');
     }
 
     /**
@@ -21,8 +22,15 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    
+
     public function index()
-    {
-        return view('home');
-    }
+{
+    // Get active slides ordered by their display order
+    $slides = \App\Models\Slide::where('is_active', true)
+                              ->orderBy('order', 'asc')
+                              ->get();
+    
+    return view('frontend.home', compact('slides'));
+}
 }
