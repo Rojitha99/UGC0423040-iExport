@@ -8,43 +8,10 @@
 
 
 
-<!-- Search Bar -->
-<div class="search-container" role="search">
-  <input type="text" class="search-bar" placeholder="What are you looking for?">
-  <button class="search-btn">
-    <i class="bi bi-search"></i>
-  </button>
-</div>
+
 
     <!-- Stats Section -->
-    <section class="container mb-5">
-        <div class="row g-4">
-            <div class="col-md-3">
-                <div class="stat-card p-4 bg-white rounded shadow-sm h-100">
-                    <h3 class="fw-bold">50+</h3>
-                    <p class="text-muted mb-0">Verified Exporters</p>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="stat-card p-4 bg-white rounded shadow-sm h-100">
-                    <h3 class="fw-bold">100+</h3>
-                    <p class="text-muted mb-0">Product Categories</p>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="stat-card p-4 bg-white rounded shadow-sm h-100">
-                    <h3 class="fw-bold">1,000+</h3>
-                    <p class="text-muted mb-0">Monthly Transactions</p>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="stat-card p-4 bg-white rounded shadow-sm h-100">
-                    <h3 class="fw-bold">24h</h3>
-                    <p class="text-muted mb-0">Avg. Response Time</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    @include('frontend.buyer.Buyer_Summery')
 
     <!-- Benefits Section -->
     <section class="container mb-5">
@@ -161,87 +128,102 @@
     </section>
 
     <!-- Testimonials -->
-    <section class="bg-light py-5 mb-5">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="fw-bold">Trusted By Global Buyers</h2>
-                <p class="text-muted">What international importers say about iExport</p>
+<section class="bg-light py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Trusted By Global Buyers</h2>
+            <p class="text-muted">What international importers say about iExport</p>
+        </div>
+        
+        <div class="row g-4">
+            <!-- Card Item -->
+            <div class="col-md-4">
+                <div class="card h-90 shadow-sm border-0">
+                    <div class="card-body d-flex flex-column">
+                        <!-- Stars -->
+                        <div class="mb-3 text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <!-- Text -->
+                        <p class="card-text flex-grow-1">
+                            "iExport has transformed how we source Ceylon cinnamon. 
+                            The quality assurance and direct supplier access saves us 20% 
+                            ."
+                        </p>
+                    </div>
+                    <!-- Footer -->
+                    <div class="card-footer bg-white border-0 pt-5">
+                        <div class="d-flex align-items-center">
+                            <img src="https://randomuser.me/api/portraits/women/65.jpg" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%;" class="rounded-circle me-3">
+                            <div>
+                                <h6 class="mb-0">Sarah Johnson</h6>
+                                <small class="text-muted">Global Spices Inc., USA</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <div class="mb-3 text-warning">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <p class="card-text">"iExport has transformed how we source Ceylon cinnamon. The quality assurance and direct supplier access saves us 20% compared to traditional channels."</p>
+
+            <!-- Repeat for other cards -->
+            <div class="col-md-4">
+                <div class="card h-10 shadow-sm border-0">
+                    <div class="card-body d-flex flex-column">
+                        <div class="mb-3 text-warning">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
                         </div>
-                        <div class="card-footer bg-white border-top-0">
-                            <div class="d-flex align-items-center">
-                                <img src="https://randomuser.me/api/portraits/women/65.jpg" width="50" height="50" class="rounded-circle me-3">
-                                <div>
-                                    <h6 class="mb-0">Sarah Johnson</h6>
-                                    <small class="text-muted">Global Spices Inc., USA</small>
-                                </div>
+                        <p class="card-text flex-grow-1">
+                            “Our partnership with Sri Lankan exporters has been seamless. 
+                            High-quality cloves and tea products, always delivered on time.”
+                        </p>
+                    </div>
+                    <div class="card-footer bg-white border-0 pt-5">
+                        <div class="d-flex align-items-center">
+                            <img src="{{ asset('images/pol.webp') }}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%;" class="rounded-circle me-3">
+                            <div>
+                                <h6 class="mb-0">San Paul</h6>
+                                <small class="text-muted">PureTaste Distributors (Germany)</small>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <div class="mb-3 text-warning">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <p class="card-text">“Our partnership with Sri Lankan exporters has been seamless. High-quality cloves and tea products, always delivered on time.”</p>
+            </div>
+
+            <!-- Third Card -->
+            <div class="col-md-4">
+                <div class="card h-10 shadow-sm border-0">
+                    <div class="card-body d-flex flex-column">
+                        <div class="mb-3 text-warning">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
                         </div>
-                        <div class="card-footer bg-white border-top-0">
-                            <div class="d-flex align-items-center">
-                                <img src="{{ asset('images/pol.webp') }}" width="50" height="50" class="rounded-circle me-3">
-                                <div>
-                                    <h6 class="mb-0">San Paul</h6>
-                                    <small class="text-muted">PureTaste Distributors (Germany)</small>
-                                </div>
+                        <p class="card-text flex-grow-1">
+                            “We received top-grade Ceylon cinnamon with rich aroma and 
+                            excellent packaging. Very satisfied with the sourcing process 
+                            and prompt delivery.”
+                        </p>
+                    </div>
+                    <div class="card-footer bg-white border-0 pt-5">
+                        <div class="d-flex align-items-center">
+                            <img src="{{ asset('images/ken.webp') }}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%;"  class="rounded-circle me-3">
+                            <div>
+                                <h6 class="mb-0">Kean Wilianson</h6>
+                                <small class="text-muted">King Spices Ltd. (UK)</small>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <div class="mb-3 text-warning">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <p class="card-text">“We received top-grade Ceylon cinnamon with rich aroma and excellent packaging. Very satisfied with the sourcing process and prompt delivery.”</p>
-                        </div>
-                        <div class="card-footer bg-white border-top-0">
-                            <div class="d-flex align-items-center">
-                                <img src="{{ asset('images/ken.webp') }}" width="50" height="50" class="rounded-circle me-3">
-                                <div>
-                                    <h6 class="mb-0">kean Wilianson</h6>
-                                    <small class="text-muted">King Spices Ltd. (UK)</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
 
     <!-- CTA Section -->
     <section class="container mb-5">

@@ -5,13 +5,7 @@
 @section('content')
 
 
-<!-- Search Bar -->
-<div class="search-container" role="search">
-  <input type="text" class="search-bar" placeholder="What are you looking for?">
-  <button class="search-btn">
-    <i class="bi bi-search"></i>
-  </button>
-</div>
+
     <!-- Hero Section -->
     <section class="hero-section text-center">
         <div class="container">
@@ -31,34 +25,7 @@
     </section>
 
     <!-- Stats Section -->
-    <section class="container mb-5">
-        <div class="row g-4">
-            <div class="col-md-3">
-                <div class="stat-card p-4 bg-white rounded shadow-sm h-100">
-                    <h3 class="fw-bold">1,250+</h3>
-                    <p class="text-muted mb-0">Verified Sellers</p>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="stat-card p-4 bg-white rounded shadow-sm h-100">
-                    <h3 class="fw-bold">75+</h3>
-                    <p class="text-muted mb-0">Countries Served</p>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="stat-card p-4 bg-white rounded shadow-sm h-100">
-                    <h3 class="fw-bold">25</h3>
-                    <p class="text-muted mb-0">Districts Covered</p>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="stat-card p-4 bg-white rounded shadow-sm h-100">
-                    <h3 class="fw-bold">$50M+</h3>
-                    <p class="text-muted mb-0">Annual Exports</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    @include('frontend.sellers.Seller_Summery')
 
     <!-- Benefits Section -->
     <section id="seller-benefits" class="container mb-5">
@@ -142,80 +109,8 @@
             <h2 class="fw-bold">What Our Sellers Say</h2>
             <p class="text-muted">Success stories from our verified exporters</p>
         </div>
+        @include('frontend.sellers.Seller_Review')
         
-        <div class="row g-4">
-            <div class="col-md-4">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="mb-3 text-warning">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <p class="card-text">"iExport helped us triple our cinnamon exports to Europe within just one year. The buyer network is incredible."</p>
-                    </div>
-                    <div class="card-footer bg-white border-top-0">
-                        <div class="d-flex align-items-center">
-                            <img src="{{ asset('images/bawan.jpg') }}" width="50" height="50" class="rounded-circle me-3">
-                            <div>
-                                <h6 class="mb-0">Bawantha Malshan</h6>
-                                <small class="text-muted">Colombo Spice Exporters</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Add 2 more testimonials -->
-             <div class="col-md-4">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="mb-3 text-warning">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <p class="card-text">“We’ve been sourcing Ceylon cinnamon and cloves from Ceylon Aroma for over two years now. Their product quality is top-notch — rich aroma, clean packaging, and always on time. Their communication is clear, and the documentation is professional. Highly recommended for bulk spice buyers.”
-— Green Leaf Importers, Germany</p>
-                    </div>
-                    <div class="card-footer bg-white border-top-0">
-                        <div class="d-flex align-items-center">
-                            <img src="{{ asset('images/jani.jpg') }}" width="50" height="50" class="rounded-circle me-3">
-                            <div>
-                                <h6 class="mb-0">Janidu Malawipathirana</h6>
-                                <small class="text-muted">JM Agricultura</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="mb-3 text-warning">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <p class="card-text">“We’ve been importing cinnamon from Ceylon Aroma Exports for over a year. Their product quality is consistently excellent, and shipments always arrive on time.”</p>
-                    </div>
-                    <div class="card-footer bg-white border-top-0">
-                        <div class="d-flex align-items-center">
-                            <img src="{{ asset('images/asg.jpg') }}" width="50" height="50" class="rounded-circle me-3">
-                            <div>
-                                <h6 class="mb-0">Asgir Perera</h6>
-                                <small class="text-muted">SL-Top Company</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </section>
 
-    @endsection
+ @endsection

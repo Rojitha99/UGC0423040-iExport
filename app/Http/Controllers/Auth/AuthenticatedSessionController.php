@@ -43,7 +43,7 @@ class AuthenticatedSessionController extends Controller
                 return redirect()->intended('/buyer/home');
 
             case 'investor':
-                return redirect()->intended('/investor/home');
+                return redirect()->intended('/admin/dashboard');
 
             case 'logistic':
                 return redirect()->intended('/logistic/portal');

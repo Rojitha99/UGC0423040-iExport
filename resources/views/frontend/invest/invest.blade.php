@@ -12,39 +12,33 @@
 </div>
 <div class="spice-nav">
     <div class="spice-item">
-      <a href="invest_cin.html">
+      <a href="{{ route('frontend.invest.invest_car') }}">
       <img src="{{ asset('images/cin.webp') }}" style="filter: brightness(50%)" alt="Cinnamon">
       <div class="spice-name" style="opacity: 1" >Ceylon Cinnamon</div></a>
     </div>
     <div class="spice-item">
-      <a href="invest_pep.html">
+      <a href="{{ route('frontend.invest.invest_car') }}">
       <img src="{{ asset('images/pep.webp') }}" alt="Pepper">
       <div class="spice-name">Ceylon Pepper  </div></a>
     </div>
     <div class="spice-item">
-      <a href="invest_clo.html">
+      <a href="{{ route('frontend.invest.invest_car') }}">
       <img src="{{ asset('images/clo3.webp') }}" alt="Cloves">
       <div class="spice-name">Ceylon Cloves</div></a>
     </div>
     <div class="spice-item">
-      <a href="invest_nut.html">
+      <a href="{{ route('frontend.invest.invest_car') }}">
       <img src="{{ asset('images/nut2.webp') }}" alt="Nutmeg">
       <div class="spice-name">Ceylon Nutmeg</div></a>
     </div>
     <div class="spice-item">
-      <a href="invest_car.html">
+      <a href="{{ route('frontend.invest.invest_car') }}">
       <img src="{{ asset('images/car.jpeg') }}" alt="Cardamom">
       <div class="spice-name">Ceylon Cardamom</div></a>
     </div>
   </div>
 
-  <!-- Search Bar -->
-<div class="search-container" role="search">
-  <input type="text" class="search-bar" placeholder="What are you looking for?">
-  <button class="search-btn">
-    <i class="bi bi-search"></i>
-  </button>
-</div>
+
 
 <!-- Main Content Container -->
 <div class="container main-content-container mt-4">

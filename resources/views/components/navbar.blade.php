@@ -1,5 +1,5 @@
 <!-- Main Navbar - Fixed -->
-<nav class="navbar navbar-expand-lg navbar-dark py-3 fixed-navbar main-navbar" style="background-color: {{ $navbarColor ?? '' }};">
+<nav class="navbar navbar-expand-lg navbar-dark py-3 fixed-navbar main-navbar" style="background-color: {{ $navbarColor ?? '' }}; z-index: 1050;">
   <div class="container-fluid">
     <a class="navbar-brand fw-bold fs-2" href="{{ route('frontend.home') }}"><i class="fa-solid fa-anchor"></i>
       iExport
@@ -16,12 +16,31 @@
           <a href="{{ route('frontend.chat') }}" style="text-decoration: none;">
           <span class="text-white"><i class="bi bi-chat-left-dots"></i> Chat</span></a>
         </li>
-        <li class="nav-item me-3">
-          <a href="{{ route('login') }}" style="text-decoration: none;">
-          <span class="text-white"><i class="bi bi-person"></i> Login</span></a>
-        </li>
+        <li class="nav-item me-3 position-relative"> <!-- Added position-relative -->
+    @auth
+        <div class="dropdown">
+            <a href="{{ route('frontend.Customer.sellerprofile') }}" class="dropdown-toggle text-white" style="text-decoration: none; position: relative; z-index: 1040;" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-person"></i> {{ Auth::user()->name }}
+            </a>
+            <ul class="dropdown-menu" style="z-index: 1002; position: absolute;">
+                <li><a class="dropdown-item" href="{{ route('frontend.Customer.sellerprofile') }}">Profile</a></li>
+                <li><a class="dropdown-item" href="{{ route('admin.layouts.master') }}">Dashboard</a></li>
+                <li>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="dropdown-item">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    @else
+        <a href="{{ route('login') }}" style="text-decoration: none; position: relative; z-index: 1000;">
+            <span class="text-white"><i class="bi bi-person"></i> Login</span>
+        </a>
+    @endauth
+</li>
         <li class="nav-item">
-          <a href="{{ route('frontend.post') }}">
+          <a href="{{ route('frontend.Customer.post') }}">
           <button class="btn btn-warning fw-bold post-ad-btn">POST YOUR AD</button></a>
         </li>
       </ul>
@@ -129,7 +148,8 @@
             Invest
         </a>
     </li>
-</ul>
+    </ul>
+    
     </div>
   </div>
 </div>

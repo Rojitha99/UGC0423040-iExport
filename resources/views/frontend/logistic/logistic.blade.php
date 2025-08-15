@@ -5,13 +5,7 @@
 @section('content')
 
 
-<!-- Search Bar -->
-<div class="search-container" role="search">
-  <input type="text" id="searchInput" class="search-bar" placeholder="Search logistics partners...">
-  <button class="search-btn" id="searchButton">
-    <i class="bi bi-search"></i>
-  </button>
-</div>
+
 
 <!-- Introduction Section -->
 <div class="container intro-section">

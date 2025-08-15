@@ -5,13 +5,7 @@
 @include('partials.css.home')
 
 @section('content')
-  <!-- Search Bar -->
-<div class="search-container" role="search">
-  <input type="text" class="search-bar" placeholder="What are you looking for?">
-  <button class="search-btn">
-    <i class="bi bi-search"></i>
-  </button>
-</div>
+
 
 
 
@@ -22,37 +16,7 @@
     <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
   </div>
   <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="{{ asset('images/cin-m.webp') }}" class="d-block w-100" alt="First slide">
-      <div class="container">
-        <div class="carousel-caption text-start">
-          <h1>High Quality Product</h1>
-          <p class="opacity-75">Sri Lanka’s agriculture sector includes tea, cinnamon, rice, rubber, and coconut farming. It supports rural livelihoods, exports, and food security, playing a vital role in the national economy.
-</p>
-          <p><a class="btn btn-lg btn-primary" href="{{ route('frontend.cinnamon') }}">Learn more</a></p>
-        </div>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="{{ asset('images/log.jpg') }}" class="d-block w-100" alt="Second slide">
-      <div class="container">
-        <div class="carousel-caption">
-          <h1>Our Logistic Platform</h1>
-          <p>Sri lanka is the most fameous harbers in indian oscern</p>
-          <p><a class="btn btn-lg btn-primary" href="{{ route('frontend.logistic') }}">Learn more</a></p>
-        </div>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="{{ asset('images/bis.jpeg') }}" class="d-block w-100" alt="Third slide">
-      <div class="container">
-        <div class="carousel-caption text-end">
-          <h1>Make your Business</h1>
-          <p>Your need is our Asset.you is our hart.we do your need perfectly</p>
-          <p><a class="btn btn-lg btn-primary" href="{{ route('register') }}">Sign up today</a></p>
-        </div>
-      </div>
-    </div>
+    @include('frontend.Home.slider')
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>

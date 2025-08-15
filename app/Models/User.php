@@ -6,11 +6,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+
+
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasFactory, Notifiable,HasRoles;
+    
+
+public function customers()
+{
+    return $this->hasMany(Customer::class);
+}
+public function addedCustomer()
+{
+    return $this->hasMany(Customer::class, 'user_id');
+}
 
     /**
      * The attributes that are mass assignable.
@@ -21,7 +33,6 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role',
     ];
 
     /**
@@ -43,4 +54,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function profile()
+    {
+        return $this->hasOne(UserProfile::class);
+    }
+
+    public function getProfilePhotoUrlAttribute()
+    {
+        return $this->profile?->avatar_url ?? asset('images/default-avatar.jpg');
+    }
 }

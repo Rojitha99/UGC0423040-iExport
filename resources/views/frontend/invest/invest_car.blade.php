@@ -1,443 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>iExport</title>
-  <link rel="icon" type="image/png" href="cin.webp">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Bootstrap Icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    body {
-      background-color: #fff;
-      padding-top: 140px; /* Added padding to account for fixed navbars */
-      padding-bottom: 50px;
-    }
-   
-    
-    .search-bar {
-      border-radius: 40px;
-      padding: 12px 20px;
-      font-size: 1rem;
-      width: 100%;
-      border: #cc7116;
-      outline: none;
-    }
-    .search-container {
-      max-width: 700px;
-      margin: 30px auto;
-      position: relative;
-      background: white;
-      border: #cc7116;
-      border-radius: 40px;
-      padding: 5px;
-      box-shadow: 0 2px 5px rgb(223, 40, 40);
-    }
-    .search-btn {
-      position: absolute;
-      right: 5px;
-      top: 50%;
-      transform: translateY(-50%);
-      background-color: #fcd116;
-      border-radius: 50%;
-      padding: 8px 12px;
-      border: none;
-    }
-    .search-btn i {
-      color: black;
-    }
-    .location-badge {
-      background-color: #007b5e;
-      color: white;
-      border-radius: 20px;
-      padding: 5px 15px;
-      margin-left: 15px;
-    }
-    .nav-button {
-      background-color: transparent;
-      border: 1px solid #fff;
-      font-weight: 500;
-      border-radius: 20px;
-      padding: 5px 15px;
-      color: #e3e6e4 !important;
-      text-decoration: none !important;
-    }
-    .nav-button:hover {
-      background-color: #c58911;
-    }
-    .dropdown-toggle::after {
-      display: none;
-    }
-    .hero-image {
-      width: 100%;
-      height: auto;
-      max-height: 500px;
-      object-fit: cover;
-    }
-    .image-container {
-      width: 100%;
-      overflow: hidden;
-    }
-    /* New styles for responsive navbar */
-    .navbar-nav-right {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-    }
-    @media (max-width: 991.98px) {
-      .navbar-nav-right {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .post-ad-btn {
-        margin-top: 10px;
-        margin-bottom: 10px;
-      }
-      body {
-        padding-top: 180px; /* Increased padding for mobile to account for stacked nav items */
-      }
+@extends('layouts.app', ['navbarColor' => '#3B3B3B'])
 
-    }
-    
-    /* Fixed navbar styles */
-    .fixed-navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1030;
-      width: 100%;
-    }
-    
-    .main-navbar {
-      top: 0;
-    }
-    
-    .secondary-navbar {
-      top: 72px; /* Height of main navbar */
-    }
-    
-    /* Adjust content position when secondary nav is collapsed */
-    @media (max-width: 991.98px) {
-      .secondary-navbar {
-        top: auto; /* Let it flow naturally below main navbar */
-      }
-    }
+@section('title', 'iExport-Invest')
 
-    .carousel-item img {
-  height: 400px; /* Adjust as needed */
-  object-fit: cover; /* Ensures images cover the area without distortion */
-}
-
-.featured-badge {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      background: orange;
-      color: white;
-      font-weight: bold;
-      font-size: 0.8rem;
-      padding: 3px 6px;
-      border-radius: 3px;
-    }
-
-    .carousel-control-prev-icon,
-    .carousel-control-next-icon {
-      background-color: black;
-      border-radius: 50%;
-    }
-
-    .thumbnail-group img {
-      height: 80px;
-      object-fit: cover;
-      border-radius: 5px;
-    }
-
-    .ad-card {
-      position: relative;
-      border: 1px solid #eee;
-      border-radius: 5px;
-      padding: 10px;
-      background: #fff8ee;
-      height: 100%;
-    }
-
-    .badge-member {
-      background-color: #ffc107;
-      color: black;
-      font-size: 0.75rem;
-    }
-
-    .badge-verified {
-      background-color: #0d6efd;
-      color: white;
-      font-size: 0.75rem;
-    }
-
-    .price {
-      color: green;
-      font-weight: bold;
-    }
-   .pre{
-    position: relative;
-    top:-150px;
-    left:-130px;
-    
-   }
-   .next{
-    position: relative;
-    top:-150px;
-    right:-130px;
-   }
-
-   .custom-card {
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 20px;
-    transition: all 0.3s ease;
-    background-color: #fff;
-    height: 100%;
-  }
-
-  .custom-card:hover {
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    transform: translateY(-5px);
-  }
-
-  .custom-img {
-    width: auto;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 10px;
-    transition: transform 0.3s ease;
-  }
-
-  .custom-card:hover .custom-img {
-    transform: scale(1.05);
-  }
-  .title-cat{
-    margin-top: 50px;
-    margin-bottom: 20px;
-  }
-  .spice-nav {
-      display: flex;
-      justify-content: center;
-      background-color: #f8f9fa;
-      padding: 20px;
-      gap: 20px;
-    }
-
-    .spice-item {
-      position: relative;
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      overflow: hidden;
-      cursor: pointer;
-      transition: transform 0.3s;
-    }
-
-    .spice-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 50%;
-      transition: filter 0.3s;
-    }
-
-    .spice-name {
-      position: absolute;
-      bottom: 0;
-      height: 50%;
-      width: 100%;
-      background: rgba(0, 0, 0, 0.6);
-      color: white;
-      text-align: center;
-      font-weight: bold;
-      padding: 5px;
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-
-    .spice-item:hover img {
-      filter: brightness(50%);
-    }
-
-    .spice-item:hover .spice-name {
-      opacity: 1;
-    }
-  </style>
-</head>
-<body>
-
-<!-- Main Navbar - Fixed -->
-<nav class="navbar navbar-expand-lg navbar-dark py-3 fixed-navbar main-navbar" style="background-color: rgb(223, 40, 40);">
-  <div class="container-fluid">
-    <a class="navbar-brand fw-bold fs-2" href="index.html"><i class="fa-solid fa-anchor"></i>
-      iExport
-    </a>
-    
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    
-
-      <ul class="navbar-nav navbar-nav-right mb-2 mb-lg-0 fs-5">
-        <li class="nav-item me-3">
-          <a href="chat.html" style="text-decoration: none;">
-          <span class="text-white"><i class="bi bi-chat-left-dots"></i> Chat</span></a>
-        </li>
-        <li class="nav-item me-3">
-          <a href="login.html" style="text-decoration: none;">
-          <span class="text-white"><i class="bi bi-person"></i> Login</span></a>
-        </li>
-        <li class="nav-item">
-          <a href="post.html">
-          <button class="btn btn-warning fw-bold post-ad-btn">POST YOUR AD</button></a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-<!-- Secondary Navigation - Fixed -->
-<div class="container-fluid py-3 fixed-navbar secondary-navbar" style="background-color:rgb(223, 40, 40) ;">
-  <div class="container">
-    <div class="navbar justify-content-center">
-      <ul class="navbar-nav d-flex flex-row flex-wrap justify-content-center gap-3">
-        <li class="nav-item">
-          <a class="nav-button" href="index.html">Home</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-button dropdown-toggle" href="product.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Product
-          </a>
-                    <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="Cinnamon.html">Ceylon Cinnamon</a></li>
-            <li><a class="dropdown-item" href="Pepper.html">Ceylon Pepper </a></li>
-            <li><a class="dropdown-item" href="Cloves.html">Ceylon Cloves</a></li>
-            <li><a class="dropdown-item" href="Nutmeg.html">Ceylon Nutmeg</a></li>
-            <li><a class="dropdown-item" href="Cardamom.html">Ceylon Cardamom</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-button" href="Sellers.html">Sellers</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-button" href="Buyers.html">Buyers</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-button" href="Logistic.html">Logistic</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-button" href="invest.html">Investors</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
+@section('content')
 
 
-<div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel"><br>
-  <!-- Carousel Indicators -->
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3" class="active" aria-current="true"></button>
-  </div>
 
-  <!-- Carousel Items -->
-  <div class="carousel-inner">
-    <!-- First Slide -->
-    <div class="carousel-item">
-      <img src="545829.jpg" class="d-block w-100" alt="First slide">
-      <div class="container">
-        <div class="carousel-caption text-start">
-          <h1>Example headline.</h1>
-          <p class="opacity-75">Some representative placeholder content for the first slide of the carousel.</p>
-          <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Second Slide -->
-    <div class="carousel-item">
-      <img src="log.jpg" class="d-block w-100" alt="Second slide">
-      <div class="container">
-        <div class="carousel-caption">
-          <h1>Another example headline.</h1>
-          <p>Some representative placeholder content for the second slide of the carousel.</p>
-          <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Third Slide (Active by default) -->
-    <div class="carousel-item active">
-      <img src="bis.jpeg" class="d-block w-100" alt="Third slide">
-      <div class="container">
-        <div class="carousel-caption text-end">
-          <h1>One more for good measure.</h1>
-          <p>Some representative placeholder content for the third slide of this carousel.</p>
-          <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Carousel Controls -->
-  <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
 
 <div class="title-cat">
     <h2><center>What is your Choice?</center></h2>
 </div>
 <div class="spice-nav">
     <div class="spice-item">
-      <a href="invest_cin.html">
-      <img src="cin.webp" alt="Cinnamon">
-      <div class="spice-name" >Ceylon Cinnamon</div></a>
+      <a href="{{ route('frontend.invest.invest_car') }}">
+      <img src="{{ asset('images/cin.webp') }}" style="filter: brightness(50%)" alt="Cinnamon">
+      <div class="spice-name" style="opacity: 1" >Ceylon Cinnamon</div></a>
     </div>
     <div class="spice-item">
-      <a href="invest_pep.html">
-      <img src="pep.webp"  alt="Pepper">
-      <div class="spice-name" >Ceylon Pepper  </div></a>
+      <a href="{{ route('frontend.invest.invest_car') }}">
+      <img src="{{ asset('images/pep.webp') }}" alt="Pepper">
+      <div class="spice-name">Ceylon Pepper  </div></a>
     </div>
     <div class="spice-item">
-      <a href="invest_clo.html">
-      <img src="clo.jpeg"  alt="Cloves">
-      <div class="spice-name" >Ceylon Cloves</div></a>
+      <a href="{{ route('frontend.invest.invest_car') }}">
+      <img src="{{ asset('images/clo3.webp') }}" alt="Cloves">
+      <div class="spice-name">Ceylon Cloves</div></a>
     </div>
     <div class="spice-item">
-      <a href="invest_nut.html">
-      <img src="nut.jpeg" alt="Nutmeg">
+      <a href="{{ route('frontend.invest.invest_car') }}">
+      <img src="{{ asset('images/nut2.webp') }}" alt="Nutmeg">
       <div class="spice-name">Ceylon Nutmeg</div></a>
     </div>
     <div class="spice-item">
-      <a href="invest_car.html">
-      <img src="car.jpeg" style="filter: brightness(50%)" alt="Cardamom">
-      <div class="spice-name" style="opacity: 1">Ceylon Cardamom</div></a>
+      <a href="{{ route('frontend.invest.invest_car') }}">
+      <img src="{{ asset('images/car.jpeg') }}" alt="Cardamom">
+      <div class="spice-name">Ceylon Cardamom</div></a>
     </div>
   </div>
 
-  <!-- Search Bar -->
-<div class="search-container" role="search">
-  <input type="text" class="search-bar" placeholder="What are you looking for?">
-  <button class="search-btn">
-    <i class="bi bi-search"></i>
-  </button>
-</div>
+
 
 <!-- Main Content Container -->
 <div class="container main-content-container mt-4">
@@ -463,7 +64,7 @@
         <select class="form-select mb-3" id="posterType">
           <option value="all">All</option>
           <option value="member">Member</option>
-          <option value="verified">Verified Sellers</option>
+          <option value="agent">Authorized agent</option>
           <option value="nonMember">Not Member</option>
         </select>
 
@@ -471,8 +72,9 @@
         <div class="mb-3">
           <select class="form-select" id="categoryFilter">
             <option value="all">All Categories</option>
-            <option value="cardamon">Cardamom</option>
-            <option value="oil">Cardamom Oil</option>
+            <option value="crops">Crops, Seeds & Plants</option>
+            <option value="other">Other Agriculture</option>
+            <option value="tools">Farming Tools & Machinery</option>
           </select>
         </div>
 
@@ -483,7 +85,7 @@
             <option value="jaffna">Jaffna</option>
             <option value="puttalam">Puttalam</option>
             <option value="gampaha">Gampaha</option>
-            <option value="kandy">Kandy</option>
+            <option value="kurunegala">Kurunegala</option>
             <option value="colombo">Colombo</option>
           </select>
         </div>
@@ -495,27 +97,30 @@
 
     <!-- Main Content -->
     <div class="col-md-9">
-      <h5>Ceylon Cardamom</h5>
+      <h5>Agricultural items for sale in Sri Lanka</h5>
       <p id="showingCount">Showing 1-5 of 622 ads</p>
 
+      
       <!-- Product Cards Container -->
       <div class="row" id="productsContainer">
         <!-- Product Card 1 -->
         <div class="col-sm-6 col-lg-4 mb-4" 
-             data-urgent="false" 
+             data-urgent="true" 
              data-poster-type="member" 
-             data-category="cardamom" 
-             data-location="Gampaha" 
+             data-poster-type="verified"
+             data-category="stick" 
+             data-location="gampaha" 
              data-date="2023-06-15" 
              data-price="70">
-          <a href="cin01.html" class="text-decoration-none text-dark">
-            <div class="card h-100">
-              <img src="car4.webp" class="card-img-top" alt="Pineapple Plants">
+          <a href="{{ route('frontend.cin01') }}" class="text-decoration-none text-dark">
+            <div class="card" >
+              <img src="{{ asset('images/cin.webp') }}" class="card-img-top" alt="Cinnamon">
               <div class="card-body">
-                <h5 class="card-title">Cardamom,100kg</h5>
-                <p class="card-text">Negombo,Gampaha</p>
-                <p class="card-text text-success">$ 10</p>
-                <p class="card-text"><small class="text-muted">1 day ago</small></p>
+                <h5 class="card-title">Cinnamon Sticks 4,5 inch 500kg</h5>
+                <p class="card-text">SL Plant,Kadawatha,Gampaha</p>
+                <p class="card-text text-success">$ 9</p>
+                <p class="card-text" style="color:red"><b>Urgent</b></p>
+                <p class="card-text"><small class="text-muted">1 days ago</small></p>
               </div>
             </div>
           </a>
@@ -525,17 +130,17 @@
         <div class="col-sm-6 col-lg-4 mb-4" 
              data-urgent="false" 
              data-poster-type="member" 
-             data-category="cardamom" 
-             data-location="kandy" 
+             data-category="stick" 
+             data-location="Gampaha" 
              data-date="2025-06-14" 
              data-price="40">
-          <a href="car01.html" class="text-decoration-none text-dark">
+          <a href="cin01.html" class="text-decoration-none text-dark">
             <div class="card h-100">
-              <img src="car7.webp" class="card-img-top" alt="Pineapple Plants">
+              <img src="{{ asset('images/cin5.webp') }}" class="card-img-top" alt="Cinnamon">
               <div class="card-body">
-                <h5 class="card-title">Cardamom 1000kg Certificate EDB/DOA</h5>
-                <p class="card-text">Rikllagaskada,Central province</p>
-                <p class="card-text text-success">$ 12</p>
+                <h5 class="card-title">Cinnamon 5/6 inch sticks 200kg</h5>
+                <p class="card-text">Ragama,Gampaha</p>
+                <p class="card-text text-success">$ 8</p>
                 <p class="card-text"><small class="text-muted">2 days ago</small></p>
               </div>
             </div>
@@ -546,17 +151,17 @@
         <div class="col-sm-6 col-lg-4 mb-4" 
              data-urgent="false" 
              data-poster-type="member" 
-             data-category="cardamom" 
-             data-location="jaffna" 
+             data-category="oil" 
+             data-location="matara" 
              data-date="2023-06-13" 
              data-price="170">
           <a href="cin01.html" class="text-decoration-none text-dark">
-            <div class="card h-100" >
-              <img src="car.webp" class="card-img-top" alt="Pineapple Plants">
+            <div class="card h-100">
+              <img src="{{ asset('images/cin6.webp') }}" class="card-img-top" alt="Pineapple Plants">
               <div class="card-body">
-                <h5 class="card-title">Cardamom,100kg(EDB)</h5>
-                <p class="card-text">Jaffna</p>
-                <p class="card-text text-success">$ 11</p>
+                <h5 class="card-title">Cinnamon Oil</h5>
+                <p class="card-text">RS Farm,Matara</p>
+                <p class="card-text text-success">$ 9.3/p>
                 <p class="card-text"><small class="text-muted">3 days ago</small></p>
               </div>
             </div>
@@ -567,17 +172,17 @@
         <div class="col-sm-6 col-lg-4 mb-4" 
              data-urgent="false" 
              data-poster-type="member" 
-             data-category="oil" 
-             data-location="puttalam" 
+             data-category="powder" 
+             data-location="kalutara" 
              data-date="2023-06-12" 
              data-price="25">
           <a href="#" class="text-decoration-none text-dark">
             <div class="card h-100">
-              <img src="car2.webp" class="card-img-top" alt="Snake Plants">
+              <img src="{{ asset('images/cin2.webp') }}" class="card-img-top" alt="Snake Plants">
               <div class="card-body">
-                <h5 class="card-title">Cardamom Oil,300 liters</h5>
-                <p class="card-text">SS Company,Puttalam</p>
-                <p class="card-text text-success">$ 9.5</p>
+                <h5 class="card-title">Cinnamon Powder,100kg,(EDB)</h5>
+                <p class="card-text">Kalutara</p>
+                <p class="card-text text-success">$ 8.9</p>
                 <p class="card-text"><small class="text-muted">4 days ago</small></p>
               </div>
             </div>
@@ -588,17 +193,17 @@
         <div class="col-sm-6 col-lg-4 mb-4" 
              data-urgent="false" 
              data-poster-type="verified" 
-             data-category="cardamom" 
-             data-location="colombo" 
+             data-category="oil" 
+             data-location="Colombo" 
              data-date="2023-06-11" 
              data-price="20">
           <a href="#" class="text-decoration-none text-dark">
             <div class="card h-100">
-              <img src="car3.webp" class="card-img-top" alt="Snake Plants">
+              <img src="{{ asset('images/cin3.webp') }}" class="card-img-top" alt="Snake Plants">
               <div class="card-body">
-                <h5 class="card-title">Cardamom Certificate SLSI/EDB </h5>
-                <p class="card-text">Colombo 10</p>
-                <p class="card-text text-success">$ 9</p>
+                <h5 class="card-title">Cinnamon Oil</h5>
+                <p class="card-text">Ebert Grow,Colombo 12</p>
+                <p class="card-text text-success">$ 9.1</p>
                 <p class="card-text"><small class="text-muted">5 days ago</small></p>
               </div>
             </div>
@@ -609,17 +214,17 @@
         <div class="col-sm-6 col-lg-4 mb-4" 
              data-urgent="true" 
              data-poster-type="notMember" 
-             data-category="oil" 
-             data-location="kandy" 
+             data-category="powder" 
+             data-location="Kurunegala" 
              data-date="2023-06-10" 
              data-price="100">
-          <a href="car01.html" class="text-decoration-none text-dark">
-            <div class="card h-100">
-              <img src="car5.webp" class="card-img-top" alt="Snake Plants">
+          <a href="#" class="text-decoration-none text-dark">
+            <div class="card h-100" >
+              <img src="{{ asset('images/cin5.webp') }}" class="card-img-top" alt="Snake Plants">
               <div class="card-body">
-                <h5 class="card-title">Cardamom Oil,200 liters,(SLS)</h5>
-                <p class="card-text">Agriculture,Ampitiya</p>
-                <p class="card-text text-success">$ 10.1</p>
+                <h5 class="card-title">Cinnamon Powder,(EDB)</h5>
+                <p class="card-text">Hikaduwa,Gall</p>
+                <p class="card-text text-success">$ 10</p>
                 <p class="card-text" style="color:red"><b>Urgent</b></p>
                 <p class="card-text"><small class="text-muted">6 days ago</small></p>
               </div>
@@ -646,62 +251,7 @@
   </div>
 </div>
 
-<!-- Footer -->
-    <footer class="bg-dark text-white py-5">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4 mb-4">
-        <h5 class="fw-bold mb-3"><i class="fa-solid fa-anchor"></i></i> iExport</h5>
-        <p>Sri Lanka's premier agricultural export platform connecting global buyers with verified sellers.</p>
-        <div class="mt-4">
-          <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
-          <a href="#" class="text-white me-3"><i class="bi bi-linkedin"></i></a>
-          <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i></a>
-        </div>
-      </div>
-      <div class="col-md-2 mb-4">
-        <h6 class="fw-bold">For Buyers</h6>
-        <ul class="list-unstyled">
-          <li class="mb-2"><a href="Cinnamon.html" class="text-white-50">Browse Products</a></li>
-          <li class="mb-2"><a href="Sellers.html" class="text-white-50">Find Suppliers</a></li>
-          <li class="mb-2"><a href="Buyers.html" class="text-white-50">Buyer Protection</a></li>
-          <li class="mb-2"><a href="help.html" class="text-white-50">Help Center</a></li>
-        </ul>
-      </div>
-      <div class="col-md-2 mb-4">
-        <h6 class="fw-bold">Company</h6>
-        <ul class="list-unstyled">
-          <li class="mb-2"><a href="index.html" class="text-white-50">About Us</a></li>
-          <li class="mb-2"><a href="careers.html" class="text-white-50">Careers</a></li>
-          <li class="mb-2"><a href="chat.html" class="text-white-50">Contact</a></li>
-          <li class="mb-2"><a href="blog.html" class="text-white-50">Blog</a></li>
-        </ul>
-      </div>
-      <div class="col-md-4 mb-4">
-        <h6 class="fw-bold">Stay Updated</h6>
-        <p>Subscribe to our newsletter for product updates and market insights.</p>
-        <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Your email">
-          <button class="btn btn-success" type="button">Subscribe</button>
-        </div>
-      </div>
-    </div>
-    <hr class="my-4 bg-secondary">
-    <div class="row">
-      <div class="col-md-6">
-        <p class="small mb-0">© 2023 iExport. All rights reserved.</p>
-      </div>
-      <div class="col-md-6 text-md-end">
-        <a href="terms.html" class="text-white-50 small me-3">Terms</a>
-        <a href="privacy.html" class="text-white-50 small me-3">Privacy</a>
-        <a href="sitemap.html" class="text-white-50 small">Sitemap</a>
-      </div>
-    </div>
-  </div>
-</footer>
 
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   // Get DOM elements
@@ -811,5 +361,4 @@ document.addEventListener('DOMContentLoaded', function() {
   applyFilters();
 });
 </script>
-</body>
-</html>
+@endsection

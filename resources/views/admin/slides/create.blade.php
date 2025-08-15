@@ -24,16 +24,7 @@
                         @enderror
                     </div>
                     
-                    <!-- Order Field -->
-                    <div class="col-md-4 mb-3">
-                        <label for="order" class="form-label">Display Order</label>
-                        <input type="number" class="form-control @error('order') is-invalid @enderror" 
-                               id="order" name="order" value="{{ old('order', $nextOrder ?? 0) }}" min="0">
-                        @error('order')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                        <small class="text-muted">Lower numbers appear first</small>
-                    </div>
+                    
                 </div>
                 
                 <!-- Image Upload -->
@@ -75,12 +66,7 @@
                               rows="3">{{ old('description') }}</textarea>
                 </div>
                 
-                <!-- Status Toggle -->
-                <div class="mb-4 form-check form-switch">
-                    <input type="checkbox" class="form-check-input" 
-                           id="is_active" name="is_active" value="1" checked>
-                    <label class="form-check-label" for="is_active">Active Slide</label>
-                </div>
+                
                 
                 <!-- Form Actions -->
                 <div class="d-flex justify-content-between">

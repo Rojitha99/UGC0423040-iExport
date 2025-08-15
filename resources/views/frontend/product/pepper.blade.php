@@ -11,56 +11,7 @@
 <div class="container main-content-container mt-4">
   <div class="row">
     <!-- Sidebar Filter -->
-    <div class="col-md-3" style="height: 600px; overflow-y: auto; position: sticky; top: 140px;">
-      <div class="sidebar">
-        <h6>Sort results by</h6>
-        <select class="form-select mb-3" id="sortBy">
-          <option value="newest">Date: Newest on top</option>
-          <option value="oldest">Date: Oldest on top</option>
-          <option value="priceLow">Price: Low to High</option>
-          <option value="priceHigh">Price: High to Low</option>
-        </select>
-
-        <h6>Filter ads by</h6>
-        <div class="form-check mb-3">
-          <input class="form-check-input" type="checkbox" id="urgentOnly">
-          <label class="form-check-label" for="urgentOnly">URGENT</label>
-        </div>
-
-        <h6>Type of poster</h6>
-        <select class="form-select mb-3" id="posterType">
-          <option value="all">All</option>
-          <option value="member">Member</option>
-          <option value="verified">Verified Sellers</option>
-          <option value="nonMember">Not Member</option>
-        </select>
-
-        <h6>Category</h6>
-        <div class="mb-3">
-          <select class="form-select" id="categoryFilter">
-            <option value="all">All Categories</option>
-            <option value="pepeer">Pepper</option>
-            <option value="powder">Pepper Powder</option>
-            <option value="tools">Farming Tools & Machinery</option>
-          </select>
-        </div>
-
-        <h6>Location</h6>
-        <div class="mb-3">
-          <select class="form-select" id="locationFilter">
-            <option value="all">All Locations</option>
-            <option value="jaffna">Jaffna</option>
-            <option value="puttalam">Puttalam</option>
-            <option value="gampaha">Gampaha</option>
-            <option value="kurunegala">Kurunegala</option>
-            <option value="matale">Matale</option>
-          </select>
-        </div>
-        
-        <button class="btn btn-warning w-100" id="applyFilters">Apply Filters</button>
-        <button class="btn btn-outline-secondary w-100 mt-2" id="resetFilters">Reset Filters</button>
-      </div>
-    </div>
+     @include('components.filter')
 
     <!-- Main Content -->
     <div class="col-md-9">
@@ -78,132 +29,32 @@
       <!-- Product Cards Container -->
       <div class="row" id="productsContainer">
         <!-- Product Card 1 -->
+        @foreach($customers as $customer)
+         @if($customer->category == 'Pepper')
         <div class="col-sm-6 col-lg-4 mb-4" 
-             data-urgent="false" 
+             data-urgent="true" 
              data-poster-type="member" 
-             data-category="pepeer" 
-             data-location="Gampaha" 
+             data-poster-type="verified"
+             data-category="stick" 
+             data-location="gampaha" 
              data-date="2023-06-15" 
              data-price="70">
           <a href="cin01.html" class="text-decoration-none text-dark">
-            <div class="card h-100">
-              <img src="{{ asset('images/pep.webp') }}" class="card-img-top" alt="Pineapple Plants">
+            <div class="card" >
+              <img src="{{ asset('storage/'.$customer->image) }}" class="card-img-top" alt="Pepper">
               <div class="card-body">
-                <h5 class="card-title">pepper</h5>
-                <p class="card-text">Waliweriya,Gampaha</p>
-                <p class="card-text text-success">$ 10</p>
-                <p class="card-text"><small class="text-muted">1 day ago</small></p>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <!-- Product Card 2 -->
-        <div class="col-sm-6 col-lg-4 mb-4" 
-             data-urgent="false" 
-             data-poster-type="member" 
-             data-category="powder" 
-             data-location="matale" 
-             data-date="2025-06-14" 
-             data-price="40">
-          <a href="cin01.html" class="text-decoration-none text-dark">
-            <div class="card h-100">
-              <img src="{{ asset('images/pep5.webp') }}" class="card-img-top" alt="Pineapple Plants">
-              <div class="card-body">
-                <h5 class="card-title">pepeer Powder</h5>
-                <p class="card-text">Matale,Central province</p>
-                <p class="card-text text-success">$ 9.9/p>
-                <p class="card-text"><small class="text-muted">2 days ago</small></p>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <!-- Product Card 3 -->
-        <div class="col-sm-6 col-lg-4 mb-4" 
-             data-urgent="false" 
-             data-poster-type="member" 
-             data-category="pepeer" 
-             data-location="jaffna" 
-             data-date="2023-06-13" 
-             data-price="170">
-          <a href="cin01.html" class="text-decoration-none text-dark">
-            <div class="card h-100" >
-              <img src="{{ asset('images/pep6.webp') }}" class="card-img-top" alt="Pineapple Plants">
-              <div class="card-body">
-                <h5 class="card-title">Pepper,100kg(EDB)</h5>
-                <p class="card-text">Jaffna</p>
-                <p class="card-text text-success">$ 8.9</p>
-                
-                <p class="card-text"><small class="text-muted">3 days ago</small></p>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <!-- Product Card 4 -->
-        <div class="col-sm-6 col-lg-4 mb-4" 
-             data-urgent="false" 
-             data-poster-type="member" 
-             data-category="powder" 
-             data-location="puttalam" 
-             data-date="2023-06-12" 
-             data-price="25">
-          <a href="#" class="text-decoration-none text-dark">
-            <div class="card h-100">
-              <img src="{{ asset('images/pep4.webp') }}" class="card-img-top" alt="Snake Plants">
-              <div class="card-body">
-                <h5 class="card-title">Pepper Powder,300kg</h5>
-                <p class="card-text">AB Company,Puttalam</p>
-                <p class="card-text text-success">$ 8.5</p>
-                <p class="card-text"><small class="text-muted">4 days ago</small></p>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <!-- Product Card 5 -->
-        <div class="col-sm-6 col-lg-4 mb-4" 
-             data-urgent="false" 
-             data-poster-type="verified" 
-             data-category="powder" 
-             data-location="kurunegala" 
-             data-date="2023-06-11" 
-             data-price="20">
-          <a href="#" class="text-decoration-none text-dark">
-            <div class="card h-100">
-              <img src="{{ asset('images/pep3.webp') }}" class="card-img-top" alt="Snake Plants">
-              <div class="card-body">
-                <h5 class="card-title">Pepper Powder</h5>
-                <p class="card-text">IIS,kurunagala</p>
-                <p class="card-text text-success">$ 9.2</p>
-                <p class="card-text"><small class="text-muted">5 days ago</small></p>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <!-- Product Card 6 -->
-        <div class="col-sm-6 col-lg-4 mb-4" 
-             data-urgent="true" 
-             data-poster-type="notMember" 
-             data-category="pepper" 
-             data-location="Kurunegala" 
-             data-date="2023-06-10" 
-             data-price="100">
-          <a href="#" class="text-decoration-none text-dark">
-            <div class="card h-100">
-              <img src="{{ asset('images/pep2.webp') }}" class="card-img-top" alt="Snake Plants">
-              <div class="card-body">
-                <h5 class="card-title">Pepper,200kg,(SLS)</h5>
-                <p class="card-text">Agriculture,Kurunegala</p>
-                <p class="card-text text-success">$ 9.6</p>
+                <h5 class="card-title">{{$customer->post_title}}</h5>
+                <p class="card-text">{{$customer->company_name}}</p>
+                <p class="card-text text-success">Rs.{{$customer->price}}</p>
                 <p class="card-text" style="color:red"><b>Urgent</b></p>
-                <p class="card-text"><small class="text-muted">6 days ago</small></p>
+                <p class="card-text"><small class="text-muted">{{$customer->created_at}}</small></p>
               </div>
             </div>
           </a>
         </div>
+        @endif
+        @endforeach
+
       </div>
 
       <!-- Pagination -->

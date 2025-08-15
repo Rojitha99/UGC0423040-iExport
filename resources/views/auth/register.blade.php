@@ -42,14 +42,14 @@
         <div class="mt-4">
     <label for="role" class="form-label">Register As:</label>
     <select id="role" name="role" class="form-select" required>
-        <option value="admin">Admin</option>
+        <!-- <option value="admin">Admin</option> -->
         <option value="buyer">Buyer</option>
         <option value="seller">Seller</option>
         <option value="investor">Investor</option>
-        <option value="logistic">Logistic Partner</option>
+        <!-- <option value="logistic">Logistic Partner</option>
         @if(config('app.allow_admin_registration'))
             <option value="admin">Admin</option>
-        @endif
+        @endif -->
     </select>
 </div>
 

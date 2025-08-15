@@ -10,13 +10,12 @@ class Slide extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title',
+        'heading',
         'description',
-        'image_path',
-        'button_text',
-        'button_link',
-        'order',
-        'is_active'
+        'button_name',
+        'image',
+        'more_info_link',
+        
     ];
     // app/Models/Slide.php
 public function getImageUrlAttribute()

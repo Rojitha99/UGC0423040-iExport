@@ -338,4 +338,18 @@
     .spice-item:hover .spice-name {
       opacity: 1;
     }
+
+/* Force dropdown above navbar */
+.navbar .dropdown-menu {
+    z-index: 1055 !important; /* Higher than navbar (Bootstrap navbar is 1030) */
+}
+
+.testimonial-img {
+  width: 80px; /* or whatever size you want */
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+    
   </style>
